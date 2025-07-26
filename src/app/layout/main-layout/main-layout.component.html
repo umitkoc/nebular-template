@@ -1,14 +1,1 @@
-<nb-layout>
-    <nb-layout-header fixed>
-        <nb-select [(ngModel)]="currentTheme" (selectedChange)="toggleTheme($event)">
-            <nb-option *ngFor="let color of colorList" [value]="color.value">{{ color.name }}</nb-option>
-        </nb-select>
-    </nb-layout-header>
-    <nb-sidebar>
-        <nb-menu [items]="menuItems" [autoCollapse]="true"></nb-menu>
-    </nb-sidebar>
-    <nb-layout-column>
-        <router-outlet></router-outlet>
-    </nb-layout-column>
-    <nb-layout-footer fixed></nb-layout-footer>
-</nb-layout>
+<router-outlet></router-outlet>

@@ -1,5 +1,7 @@
 # Myapp
 
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.11.
 
 ## Development server
@@ -25,3 +27,9 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+<img src="image.png" width="45%">
+<img src="image2.png" width="45%">
+<img src="image4.png" width="45%">
+<img src="image3.png" width="45%">
