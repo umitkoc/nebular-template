@@ -1,0 +1,49 @@
+<div class="login-wrapper">
+  <nb-spinner *ngIf="isLoading">
+    <nb-spinner></nb-spinner>
+  </nb-spinner>
+    <nb-card class="login-card" *ngIf="!isLoading">
+   
+      <nb-card-header>
+        <div class="card-header-content">
+          <img src="https://cdn-icons-png.flaticon.com/512/1144/1144760.png" alt="Giriş" class="login-image" />
+          <h3>Giriş Yap</h3>
+        </div>
+      </nb-card-header>
+  
+      <nb-card-body>
+        <form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="login-form">
+          <input
+            nbInput
+            fullWidth
+            placeholder="E-posta"
+            formControlName="email"
+            type="email"
+          />
+  
+          <div class="error-text" *ngIf="email.invalid && (email.dirty || email.touched)">
+            <small *ngIf="email.errors?.['required']">E-posta gerekli</small>
+            <small *ngIf="email.errors?.['email']">Geçerli bir e-posta girin</small>
+          </div>
+  
+          <input
+            nbInput
+            fullWidth
+            placeholder="Şifre"
+            formControlName="password"
+            type="password"
+          />
+  
+          <div class="error-text" *ngIf="password.invalid && (password.dirty || password.touched)">
+            <small *ngIf="password.errors?.['required']">Şifre gerekli</small>
+          </div>
+  
+          <button nbButton status="primary" type="submit" fullWidth [disabled]="loginForm.invalid">
+            Giriş Yap
+          </button>
+        </form>
+      </nb-card-body>
+  
+    </nb-card>
+  </div>
+  
