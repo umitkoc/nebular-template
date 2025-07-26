@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
-
 import {
     NbThemeModule,
     NbLayoutModule,
@@ -16,7 +15,8 @@ import {
     NbInputModule,
     NbToastrModule,
     NbDialogModule,
-    NbSpinnerModule
+    NbSpinnerModule,
+    NbWindowModule,
   } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { AppRoutingModule } from './app-routing.module';
@@ -30,6 +30,8 @@ import { MainLayoutComponent } from './layout/main-layout/main-layout.component'
 import { LoginLayoutComponent } from './layout/login-layout/login-layout.component';
 import { LogoutComponent } from './pages/logout/logout.component';
 import { ConfirmDialogComponent } from './shared/confirm-dialog/confirm-dialog.component';
+import { StoryWindowComponent } from './shared/story-window/story-window.component';
+import { BlogAiComponent } from './pages/blog-ai/blog-ai.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,9 @@ import { ConfirmDialogComponent } from './shared/confirm-dialog/confirm-dialog.c
     MainLayoutComponent,
     LoginLayoutComponent,
     LogoutComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    StoryWindowComponent,
+    BlogAiComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -55,6 +59,7 @@ import { ConfirmDialogComponent } from './shared/confirm-dialog/confirm-dialog.c
     NbToastrModule.forRoot(),
     NbThemeModule.forRoot({ name: 'default' }),
     NbLayoutModule,
+    NbWindowModule.forRoot(),
     NbEvaIconsModule,
     NbMenuModule.forRoot(),
     NbSidebarModule.forRoot(),
@@ -63,7 +68,7 @@ import { ConfirmDialogComponent } from './shared/confirm-dialog/confirm-dialog.c
     NbCardModule,
     NbInputModule,
     ReactiveFormsModule,
-    NbDialogModule.forRoot()
+    NbDialogModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

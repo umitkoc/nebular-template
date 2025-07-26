@@ -35,6 +35,7 @@ export class AppComponent {
 
   menuItems = [
     { title: 'Home', icon: 'home-outline', link: '/' },
+    { title: 'Blog AI', icon: 'file-text-outline', link: '/blog' },
     { title: 'About', icon: 'info-outline', link: '/about' },
     { title: 'Contact', icon: 'email-outline', link: '/contact' },
     { title: 'Profile', icon: 'person-outline', link: '/profile' },

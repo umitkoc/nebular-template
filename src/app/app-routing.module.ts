@@ -12,6 +12,7 @@ import { LoginLayoutComponent } from './layout/login-layout/login-layout.compone
 import { AuthGuard } from './auth.guard';
 import { loginGuard } from './login.guard';
 import { LogoutComponent } from './pages/logout/logout.component';
+import { BlogAiComponent } from './pages/blog-ai/blog-ai.component';
 
 
 const routes: Routes = [
@@ -29,6 +30,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       { path: '', component: HomeComponent },
+      { path:'blog',component:BlogAiComponent},
       { path: 'about', component: AboutComponent },
       { path: 'contact', component: ContactComponent },
       { path: 'profile', component: ProfileComponent },

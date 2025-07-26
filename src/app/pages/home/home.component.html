@@ -1,1 +1,19 @@
-<p>home works!</p>
+<nb-card *ngFor="let story of stories" class="story-card mb-3">
+    <nb-card-header>
+      <strong>{{ story.title }}</strong>
+    </nb-card-header>
+  
+    <nb-card-body>
+      <img [src]="story.image" alt="story image" class="story-image mb-2" style="width: 100%; max-height: 200px; object-fit: cover;" />
+      <p>
+        {{ story.content | slice: 0:200 }}...
+      </p>
+    </nb-card-body>
+  
+    <nb-card-footer class="text-right">
+      <button nbButton status="info" size="small" (click)="openWindow(story)">
+        Devamını Oku
+      </button>
+    </nb-card-footer>
+  </nb-card>
+  
