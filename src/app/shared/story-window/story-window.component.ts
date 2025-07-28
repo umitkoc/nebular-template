@@ -1,71 +1,48 @@
 import { AfterViewInit, Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { NbWindowRef } from '@nebular/theme';
-import { PageFlip, FlipSetting } from 'page-flip';
 
 @Component({
   selector: 'app-story-window',
   templateUrl: './story-window.component.html',
   styleUrls: ['./story-window.component.scss']
 })
-export class StoryWindowComponent implements AfterViewInit {
+export class StoryWindowComponent {
   bookId!: string;
 
-  constructor(private windowRef: NbWindowRef) {}
 
-  close() {
-    this.windowRef.close();
+  texts: string[] = [
+  'Once upon a time, in a small village, there lived a kind and brave knight named Sir Cedric. He was known throughout the land for his courage and compassion.Once upon a time, in a small village, there lived a kind and brave knight named Sir Cedric. He was known throughout the land for his courage and compassion.Once upon a time, in a small village, there lived a kind and brave knight named Sir Cedric. He was known throughout the land for his courage and compassion.Once upon a time, in a small village, there lived a kind and brave knight named Sir Cedric. He was known throughout the land for his courage and compassion.Once upon a time, in a small village, there lived a kind and brave knight named Sir Cedric. He was known throughout the land for his courage and compassion.Once upon a time, in a small village, there lived a kind and brave knight named Sir Cedric. He was known throughout the land for his courage and compassion.Once upon a time, in a small village, there lived a kind and brave knight named Sir Cedric. He was known throughout the land for his courage and compassion.Once upon a time, in a small village, there lived a kind and brave knight named Sir Cedric. He was known throughout the land for his courage and compassion.Once upon a time, in a small village, there lived a kind and brave knight named Sir Cedric. He was known throughout the land for his courage and compassion.Once upon a time, in a small village, there lived a kind and brave knight named Sir Cedric. He was known throughout the land for his courage and compassion.Once upon a time, in a small village, there lived a kind and brave knight named Sir Cedric. He was known throughout the land for his courage and compassion.Once upon a time, in a small village, there lived a kind and brave knight named Sir Cedric. He was known throughout the land for his courage and compassion',
+  'One day, a terrible dragon appeared, threatening the village and its people. Sir Cedric, determined to protect his home, set out on a quest to confront the dragon.Once upon a time, in a small village, there lived a kind and brave knight named Sir Cedric. He was known throughout the land for his courage and compassion.Once upon a time, in a small village, there lived a kind and brave knight named Sir Cedric. He was known throughout the land for his courage and compassion.Once upon a time, in a small village, there lived a kind and brave knight named Sir Cedric. He was known throughout the land for his courage and compassion.Once upon a time, in a small village, there lived a kind and brave knight named Sir Cedric. He was known throughout the land for his courage and compassion.',
+  'After a long and perilous journey, Sir Cedric found the dragon in a dark cave. Instead of fighting, he spoke to the dragon, learning that it was misunderstood and only wanted to be left alone.',
+  'Realizing that the dragon was not evil, Sir Cedric offered it a deal: if the dragon promised to leave the village in peace, he would ensure that the villagers would not disturb its home.',
+  'The dragon agreed, and from that day on, the village and the dragon lived in harmony. Sir Cedric became a hero, not just for his bravery, but for his wisdom and understanding. He taught the villagers that sometimes, the greatest battles are not fought with swords, but with words and compassion.',
+  'The villagers celebrated Sir Cedric, and the dragon became a guardian of the village, watching over it from afar. Sir Cedric’s story was told for generations, inspiring others to seek peace and understanding rather than conflict.Once upon a time, in a small village, there lived a kind and brave knight named Sir Cedric. He was known throughout the land for his courage and compassion.Once upon a time, in a small village, there lived a kind and brave knight named Sir Cedric. He was known throughout the land for his courage and compassion.Once upon a time, in a small village, there lived a kind and brave knight named Sir Cedric. He was known throughout the land for his courage and compassion.',
+  'And so, the legend of Sir Cedric and the dragon lived on, reminding everyone that sometimes the bravest thing one can do is to listen and find common ground.',
+  'The End'
+  ];
+  
+  currentIndex = 0;
+  isFlipped = false;
+  currentImage: string = 'https://gratisography.com/wp-content/uploads/2024/11/gratisography-augmented-reality-800x525.jpg'; // Default image
+
+  get currentText(): string {
+    return this.texts[this.currentIndex];
   }
-  @HostListener('window:resize')
-  onResize() {
-    if (this.pageFlip) {
-      this.pageFlip.updateState({ page: this.pageFlip.getCurrentPageIndex() } as any);
-    }
+
+  flipAndNext(): void {
+    this.isFlipped = !this.isFlipped;
+    setTimeout(() => {
+      this.currentIndex = (this.currentIndex + 1) % this.texts.length;
+    }, 100); // yarım dönme sırasında metni değiştirme
   }
 
 
-  @ViewChild('pageFlipContainer', { static: false }) containerRef!: ElementRef<HTMLDivElement>;
+  
+  constructor(private windowRef: NbWindowRef) { }
 
-  pageFlip!: PageFlip;
 
-  ngAfterViewInit() {
-    const config: FlipSetting = { 
-      width: this.containerRef.nativeElement.clientWidth,    // Container genişliği
-      height: this.containerRef.nativeElement.clientHeight*2,  // Container yüksekliği
-      maxWidth: this.containerRef.nativeElement.clientWidth, // Maks genişlik container ile aynı
-      maxHeight: this.containerRef.nativeElement.clientHeight*2, // Maks yükseklik container ile aynı
-      minWidth: 300,          // En küçük genişlik
-      minHeight: 400,         // En küçük yükseklik (kitap için biraz yüksek olsun)
-      
-      showCover: true,        // Kapak sayfası gösterilsin (ilk ve son sayfa farklı görünür)
-      flippingTime: 2000,      // Sayfa çevirme animasyon süresi (ms)
-      maxShadowOpacity: 0.7,  // Gölge yoğunluğu biraz arttı (gerçekçi gölge için)
-      drawShadow: true,       // Gölge çizilsin
-      mobileScrollSupport: true, // Mobilde scroll değil dokunma ile çevirmeyi tercih et
-      
-      useMouseEvents: true,   // Fare ile çevrilsin
-      swipeDistance: 50,      // Kaydırma hassasiyeti (çok büyük olmasın)
-      
-      startPage: 0,           // İlk sayfa index’i
-      size: 'stretch' as any, // Container’a göre genişletilsin
-      
-      usePortrait: true,      // Dikey modda (kitap gibi)
-      startZIndex: 0,         // Z index başlangıcı
-      autoSize: true,         // Otomatik boyut ayarı
-      clickEventForward: true,
-      showPageCorners: true,  // Sayfa köşeleri görünsün (gerçek kitap görünümü)
-      disableFlipByClick: false, // Sayfa üzerine tıklayınca çevirme aktif
-      
-    }as FlipSetting;
-    
 
-    this.pageFlip = new PageFlip(this.containerRef.nativeElement, config);
 
-    var pages = document.getElementsByClassName('page');
 
-    // Convert HTMLCollection to array of HTMLElements
-    const pageElements = Array.from(pages) as HTMLElement[];
 
-    this.pageFlip.loadFromHTML(pageElements);
-  }
- 
 }

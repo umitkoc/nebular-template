@@ -17,6 +17,7 @@ import {
     NbDialogModule,
     NbSpinnerModule,
     NbWindowModule,
+    NbBadgeModule
   } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { AppRoutingModule } from './app-routing.module';
@@ -68,6 +69,7 @@ import { BlogAiComponent } from './pages/blog-ai/blog-ai.component';
     NbCardModule,
     NbInputModule,
     ReactiveFormsModule,
+    NbBadgeModule,
     NbDialogModule.forRoot(),
   ],
   providers: [],

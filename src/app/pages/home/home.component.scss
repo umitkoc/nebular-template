@@ -1,19 +1,53 @@
-.story-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    padding: 1rem;
-  }
-  
-  .story-card {
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  
-  .story-image {
-    width: 100%;
-    max-height: 200px;
-    object-fit: cover;
-    border-radius: 4px;
-  }
-  
+.story-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.story-item nb-card {
+  display: flex;
+  flex-direction: column;
+  height: 40vh;
+  border-radius: 5%;
+  overflow: hidden;
+  transition: transform 0.2s ease-in-out;
+}
+
+.story-item nb-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.story-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.story-title {
+  font-family: 'Literata', serif;
+  font-size: 1rem;
+  text-align: center;
+  margin-top: 0.5rem;
+  color: var(--text-basic-color);
+}
+
+.story-description {
+  font-family: 'Literata', serif;
+  font-size: 0.900rem;
+  width: 100%;
+  height: 100%;
+  color: var(--text-secondary-color);
+  padding: 1rem;
+}
+
+.story-description-container {
+  position: relative;
+  padding-right: 3rem; // butonun içine girmemesi için boşluk bırak
+}
+
+.story-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+}

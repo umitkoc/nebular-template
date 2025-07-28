@@ -1,19 +1,40 @@
-<nb-card *ngFor="let story of stories" class="story-card mb-3">
-    <nb-card-header>
-      <strong>{{ story.title }}</strong>
-    </nb-card-header>
-  
-    <nb-card-body>
-      <img [src]="story.image" alt="story image" class="story-image mb-2" style="width: 100%; max-height: 200px; object-fit: cover;" />
-      <p>
-        {{ story.content | slice: 0:200 }}...
-      </p>
-    </nb-card-body>
-  
-    <nb-card-footer class="text-right">
-      <button nbButton status="info" size="small" (click)="openWindow(story)">
-        Devamını Oku
-      </button>
-    </nb-card-footer>
-  </nb-card>
-  
+<nb-spinner *ngIf="isLoading">
+  <nb-spinner></nb-spinner>
+</nb-spinner>
+<div class="story-grid" *ngIf="!isLoading">
+  <div class="story-item" *ngFor="let story of stories">
+    <nb-flip-card>
+
+      <nb-card-front>
+        <nb-card class="story-card">
+          <img [src]="story.image" alt="story image" />
+
+          <p class="story-title">{{ story.title }}</p>
+
+          <div class="story-description-container">
+            <p class="story-description">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam minima obcaecati a alias explicabo dolore
+              consequuntur sit consequatur vero quaerat fugit iure debitis, eaque corporis vitae ab beatae ipsa in.
+            </p>
+            <button nbButton size="tiny" class="story-button" (click)="openWindow(story)">Read...</button>
+          </div>
+
+          <nb-badge text="v1.0" status="warning" position="top left"></nb-badge>
+        </nb-card>
+      </nb-card-front>
+
+      <nb-card-back>
+        <nb-card class="story-card">
+          <p class="story-description">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis harum aperiam quaerat nulla totam. Labore
+            dicta eos hic, ut laboriosam quisquam aspernatur ea unde. Itaque eos quasi quis ea quisquam.
+            Accusantium fuga recusandae accusamus. Voluptatum voluptates facilis illo animi quia numquam. Veniam,
+            commodi numquam voluptate veritatis possimus consequatur nesciunt doloribus vitae corrupti ea laborum
+            ducimus consequuntur! Quam in atque ipsum.
+          </p>
+        </nb-card>
+      </nb-card-back>
+
+    </nb-flip-card>
+  </div>
+</div>

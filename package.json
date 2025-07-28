@@ -22,7 +22,6 @@
     "@nebular/eva-icons": "11.0.1",
     "@nebular/theme": "^11.0.1",
     "eva-icons": "^1.1.3",
-    "page-flip": "^2.0.7",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"
