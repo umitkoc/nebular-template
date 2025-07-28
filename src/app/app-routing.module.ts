@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
-import { AboutComponent } from './pages/about/about.component';
-import { ContactComponent } from './pages/contact/contact.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -31,8 +29,6 @@ const routes: Routes = [
     children: [
       { path: '', component: HomeComponent },
       { path:'blog',component:BlogAiComponent},
-      { path: 'about', component: AboutComponent },
-      { path: 'contact', component: ContactComponent },
       { path: 'profile', component: ProfileComponent },
       { path: 'settings', component: SettingsComponent },
       { path: 'logout',  component: LogoutComponent}

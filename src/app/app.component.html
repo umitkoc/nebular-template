@@ -1,14 +1,19 @@
 <nb-layout>
-    <nb-layout-header fixed>
-        <nb-select [(ngModel)]="currentTheme" (selectedChange)="toggleTheme($event)">
-            <nb-option *ngFor="let color of colorList" [value]="color.value">{{ color.name }}</nb-option>
-        </nb-select>
+
+    <!-- ✅ HEADER -->
+    <nb-layout-header subheader *ngIf="isLoggedIn()">
+                <nb-search  type="rotate-layout" size="medium" placeholder="Ara..."></nb-search>
+                <nb-user  name="Ümit KOÇ" title="Software Developer" [nbContextMenu]="items" nbContextMenuTag="my-context-menu" size="medium"></nb-user>
     </nb-layout-header>
+
+    <!-- ✅ SIDEBAR -->
     <nb-sidebar tag="menu-sidebar" responsive *ngIf="isLoggedIn()">
         <nb-menu [items]="menuItems"></nb-menu>
     </nb-sidebar>
-   <nb-layout-column>
-    <router-outlet></router-outlet>
-   </nb-layout-column>
-    <nb-layout-footer fixed></nb-layout-footer>
+
+    <!-- ✅ MAIN -->
+    <nb-layout-column>
+        <router-outlet></router-outlet>
+    </nb-layout-column>
+
 </nb-layout>
