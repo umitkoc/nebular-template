@@ -20,10 +20,10 @@ import {
     NbBadgeModule,
     NbSearchModule,
     NbUserModule,
-    NbMenuItem,
     NbActionsModule,
     NbContextMenuModule,
-    NbSearchService,
+    NbChatModule,
+    NbListModule,
   } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { AppRoutingModule } from './app-routing.module';
@@ -37,6 +37,7 @@ import { LogoutComponent } from './pages/logout/logout.component';
 import { ConfirmDialogComponent } from './shared/confirm-dialog/confirm-dialog.component';
 import { StoryWindowComponent } from './shared/story-window/story-window.component';
 import { BlogAiComponent } from './pages/blog-ai/blog-ai.component';
+import { ChatComponent } from './pages/chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,8 @@ import { BlogAiComponent } from './pages/blog-ai/blog-ai.component';
     ConfirmDialogComponent,
     StoryWindowComponent,
     BlogAiComponent,
+    ChatComponent,
+    
   ],
   imports: [
     AppRoutingModule,
@@ -78,6 +81,9 @@ import { BlogAiComponent } from './pages/blog-ai/blog-ai.component';
     NbMenuModule.forRoot(),
     NbContextMenuModule,
     NbActionsModule,
+    NbChatModule.forRoot({ messageGoogleMapKey: 'MAP_KEY' }),
+    NbListModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

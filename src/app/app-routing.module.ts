@@ -11,6 +11,7 @@ import { AuthGuard } from './auth.guard';
 import { loginGuard } from './login.guard';
 import { LogoutComponent } from './pages/logout/logout.component';
 import { BlogAiComponent } from './pages/blog-ai/blog-ai.component';
+import { ChatComponent } from './pages/chat/chat.component';
 
 
 const routes: Routes = [
@@ -28,10 +29,11 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       { path: '', component: HomeComponent },
-      { path:'blog',component:BlogAiComponent},
+      { path: 'blog', component: BlogAiComponent },
       { path: 'profile', component: ProfileComponent },
       { path: 'settings', component: SettingsComponent },
-      { path: 'logout',  component: LogoutComponent}
+      { path: 'logout', component: LogoutComponent },
+      { path: 'chat', component: ChatComponent }
     ]
   },
   { path: '**', redirectTo: '' },
