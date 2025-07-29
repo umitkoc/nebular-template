@@ -6,17 +6,26 @@ import { Component } from '@angular/core';
   styleUrls: ['./chat.component.scss']
 })
 export class ChatComponent {
- users: { name: string, title: string }[] = [
+  userSearchText = '';
+  filteredUsers() {
+    const term = this.userSearchText?.toLowerCase() || '';
+    return this.users.filter(user =>
+      user.name.toLowerCase().includes(term) ||
+      user.title.toLowerCase().includes(term)
+    );
+  }
+
+  users: { name: string, title: string }[] = [
     { name: 'Carla Espinosa', title: 'Nurse' },
     { name: 'Bob Kelso', title: 'Doctor of Medicine' },
     { name: 'Janitor', title: 'Janitor' },
     { name: 'Perry Cox', title: 'Doctor of Medicine' },
     { name: 'Ben Sullivan', title: 'Carpenter and photographer' },
-     { name: 'Carla Espinosa', title: 'Nurse' },
+    { name: 'Carla Espinosa', title: 'Nurse' },
     { name: 'Bob Kelso', title: 'Doctor of Medicine' },
     { name: 'Janitor', title: 'Janitor' },
     { name: 'Perry Cox', title: 'Doctor of Medicine' },
-    { name: 'Ben Sullivan', title: 'Carpenter and photographer' }
+    { name: 'Ben Sullivan', title: 'Carpenter and photographer' },
   ];
 
     messages = [

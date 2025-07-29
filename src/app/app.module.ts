@@ -82,7 +82,9 @@ import { ChatComponent } from './pages/chat/chat.component';
     NbContextMenuModule,
     NbActionsModule,
     NbChatModule.forRoot({ messageGoogleMapKey: 'MAP_KEY' }),
-    NbListModule
+    NbListModule,
+    FormsModule,
+    NbInputModule
 
   ],
   providers: [],

@@ -1,33 +1,37 @@
 <nb-layout>
   <nb-layout-column>
 
-    <!-- 🧠 Chat Alanı -->
-    <nb-card class="chat-card">
-      <nb-chat title="Sohbet Asistanı" size="large" status="primary">
-        <nb-chat-message
-          *ngFor="let msg of messages"
-          [message]="msg.text"
-          [reply]="msg.isUser"
-          [date]="msg.date"
-          [sender]="msg.sender">
-        </nb-chat-message>
+    <div class="chat-container" style="display: flex; gap: 1rem;">
 
-        <nb-chat-form (send)="sendMessage($event)"></nb-chat-form>
-      </nb-chat>
-    </nb-card>
+      <!-- 🧠 Chat Alanı (Sol taraf) -->
+      <nb-card class="chat-card" style="flex: 2;">
+        <nb-chat title="Sohbet Asistanı" size="giant" status="basic">
+          <nb-chat-message
+            *ngFor="let msg of messages"
+            [message]="msg.text"
+            [reply]="msg.isUser"
+            [date]="msg.date"
+            [sender]="msg.sender">
+          </nb-chat-message>
+          <nb-chat-form (send)="sendMessage($event)"></nb-chat-form>
+        </nb-chat>
+      </nb-card>
 
-    <!-- 👥 Kullanıcılar: Footer Kısmı -->
-    <nb-card class="user-footer-card">
-      <nb-list class="horizontal-list">
-        <nb-list-item *ngFor="let user of users" (click)="onUserClick(user.name)">
-          <nb-user [name]="user.name" [title]="user.title"  size="medium">
+      <!-- 👥 Kullanıcı Listesi (Sağ taraf) -->
+      <nb-card size="small" style="flex: 1;">
+        <nb-card-header>
+          <input fullWidth nbInput placeholder="Kullanıcı ara..."
+          [(ngModel)]="userSearchText"
+          >
+        </nb-card-header>
+        <nb-list>
+          <nb-list-item *ngFor="let user of filteredUsers()">
+            <nb-user [name]="user.name" [title]="user.title"></nb-user>
+          </nb-list-item>
+        </nb-list>
+      </nb-card>
 
-            <!-- [picture]="" -->
-
-          </nb-user>
-        </nb-list-item>
-      </nb-list>
-    </nb-card>
+    </div>
 
   </nb-layout-column>
 </nb-layout>
