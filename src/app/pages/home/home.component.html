@@ -21,7 +21,7 @@
               İlk Yazılma: {{ story.createdAt | date: 'dd MMM yyyy' }}<br />
               Son Güncelleme: {{ story.updatedAt | date: 'dd MMM yyyy' }}
             </p>
-            <button nbButton size="tiny" class="story-button" (click)="openWindow(story)">OPEN</button>
+            <button nbButton size="tiny" class="story-button" (click)="openBookDetail(story)">Open Book</button>
           </div>
 
           <nb-badge text="v1.0" status="warning" position="top right"></nb-badge>
@@ -35,10 +35,9 @@
 
           <div class="story-description-container">
             <p class="story-description">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam minima obcaecati a alias explicabo dolore
-              consequuntur sit consequatur vero quaerat fugit iure debitis, eaque corporis vitae ab beatae ipsa in.
+             {{story.description}}
             </p>
-            <button nbButton size="tiny" class="story-button" (click)="openWindow(story)">OPEN</button>
+            <button nbButton size="tiny" class="story-button" (click)="openBookDetail(story)">Open Book</button>
           </div>
 
           <nb-badge text="v1.0" status="warning" position="top right"></nb-badge>

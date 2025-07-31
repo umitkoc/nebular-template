@@ -52,7 +52,15 @@
 
 .story-button {
   position: absolute;
-  top: 50%;
+  top: 60%;
   right: 0px;
   transform: translateY(-50%);
+}
+.title{
+    font-family: 'Literata', serif;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 1rem 0;
+    color: var(--text-basic-color);
 }

@@ -1,0 +1,54 @@
+<!-- Spinner (yükleniyor) -->
+<nb-spinner *ngIf="isLoading" class="d-flex justify-content-center mt-5">
+    <nb-spinner></nb-spinner>
+</nb-spinner>
+<h2 class="title">{{storyTitle}}</h2>
+
+<!-- Bölümler -->
+<div class="story-grid" *ngIf="!isLoading">
+
+    <div class="story-item" *ngFor="let season of storySeasons">
+        <nb-flip-card>
+
+            <!-- Ön Yüz -->
+            <nb-card-front>
+                <nb-card class="story-card">
+                    <img [src]="season.image" alt="season image" />
+                    <p class="story-title">{{ season.title }}</p>
+
+                    <div class="story-description-container">
+                        <p class="story-description">
+                            Sayfa Sayısı: {{ season.pageCount }}<br />
+                            İlk Yazılma: {{ season.createdAt | date: 'dd MMM yyyy' }}<br />
+                            Son Güncelleme: {{ season.updatedAt | date: 'dd MMM yyyy' }}
+                        </p>
+                        <button nbButton size="tiny" class="story-button" (click)="openSeason(season)">
+                            Bölümü Aç
+                        </button>
+                    </div>
+
+                    <nb-badge text="v1.0" status="warning" position="top right"></nb-badge>
+                </nb-card>
+            </nb-card-front>
+
+            <!-- Arka Yüz -->
+            <nb-card-back>
+                <nb-card class="story-card">
+                    <p class="story-title">{{ season.title }}</p>
+
+                    <div class="story-description-container">
+                        <p class="story-description">
+                            {{ season.description }}
+                        </p>
+                        <button nbButton size="tiny" class="story-button" (click)="openSeason(season)">
+                            Bölümü Aç
+                        </button>
+                    </div>
+
+                    <nb-badge text="v1.0" status="warning" position="top right"></nb-badge>
+                </nb-card>
+            </nb-card-back>
+
+        </nb-flip-card>
+    </div>
+</div>

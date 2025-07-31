@@ -10,9 +10,9 @@ import { LoginLayoutComponent } from './layout/login-layout/login-layout.compone
 import { AuthGuard } from './auth.guard';
 import { loginGuard } from './login.guard';
 import { LogoutComponent } from './pages/logout/logout.component';
-import { BlogAiComponent } from './pages/blog-ai/blog-ai.component';
 import { ChatComponent } from './pages/chat/chat.component';
 import { EditorComponent } from './pages/editor/editor.component';
+import { BookDetailComponent } from './pages/book-detail/book-detail.component';
 
 
 const routes: Routes = [
@@ -30,12 +30,12 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       { path: '', component: HomeComponent },
-      { path: 'blog', component: BlogAiComponent },
       { path: 'profile', component: ProfileComponent },
       { path: 'settings', component: SettingsComponent },
       { path: 'logout', component: LogoutComponent },
       { path: 'chat', component: ChatComponent },
-      { path: 'editor', component: EditorComponent }
+      { path: 'editor', component: EditorComponent },
+      {path: 'book-detail/:title/:id', component: BookDetailComponent}
     ]
   },
   { path: '**', redirectTo: '' },

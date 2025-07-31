@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { NbWindowService } from '@nebular/theme';
-import { StoryWindowComponent } from 'src/app/shared/story-window/story-window.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -9,39 +8,21 @@ import { StoryWindowComponent } from 'src/app/shared/story-window/story-window.c
 })
 export class HomeComponent {
   isLoading = false;
-  constructor(private windowService: NbWindowService) { }
-
-
-
+  constructor(  private router: Router) { }
   stories = [
     {
+      id: '1',
       title: 'Ejderha Günlükleri',
       image: 'https://i.pinimg.com/236x/77/b0/3e/77b03ece1a6dcb4b4ca24844c36364b0.jpg',
       pageCount: 320,
       chapterCount: 12,
       authorCount: 1,
       createdAt: new Date('2024-10-01'),
-      updatedAt: new Date('2025-07-29')
-    },
+      updatedAt: new Date('2025-07-29'),
+      description: 'Ejderhaların dünyasında geçen bir macera hikayesi.',
+    }
   ];
-
-
-  openWindow(story: any) {
-    this.isLoading = true;
-    setTimeout(() => {
-      this.windowService.open(StoryWindowComponent, {
-        title: story.title,
-        context: {
-          bookId: story.id,
-        },
-        closeOnEsc: true,
-        hasBackdrop: true,
-        windowClass: 'custom-window-size'
-
-      });
-      this.isLoading = false;
-    }, 5000);
+  openBookDetail(story: any) {
+        this.router.navigate(['/book-detail', story.title,story.id]);
   }
-
-
 }

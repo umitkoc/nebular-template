@@ -40,9 +40,10 @@ import { LoginLayoutComponent } from './layout/login-layout/login-layout.compone
 import { LogoutComponent } from './pages/logout/logout.component';
 import { ConfirmDialogComponent } from './shared/confirm-dialog/confirm-dialog.component';
 import { StoryWindowComponent } from './shared/story-window/story-window.component';
-import { BlogAiComponent } from './pages/blog-ai/blog-ai.component';
 import { ChatComponent } from './pages/chat/chat.component';
 import { EditorComponent } from './pages/editor/editor.component';
+import { BookDetailComponent } from './pages/book-detail/book-detail.component';
+import { BookService } from './service/book-service/book-service';
 
 @NgModule({
   declarations: [
@@ -56,9 +57,9 @@ import { EditorComponent } from './pages/editor/editor.component';
     LogoutComponent,
     ConfirmDialogComponent,
     StoryWindowComponent,
-    BlogAiComponent,
     ChatComponent,
-    EditorComponent
+    EditorComponent,
+    BookDetailComponent,
     
   ],
   imports: [
