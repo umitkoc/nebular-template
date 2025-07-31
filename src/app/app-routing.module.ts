@@ -13,6 +13,7 @@ import { LogoutComponent } from './pages/logout/logout.component';
 import { ChatComponent } from './pages/chat/chat.component';
 import { EditorComponent } from './pages/editor/editor.component';
 import { BookDetailComponent } from './pages/book-detail/book-detail.component';
+import { PagesDetailComponent } from './pages/pages-detail/pages-detail.component';
 
 
 const routes: Routes = [
@@ -35,7 +36,8 @@ const routes: Routes = [
       { path: 'logout', component: LogoutComponent },
       { path: 'chat', component: ChatComponent },
       { path: 'editor', component: EditorComponent },
-      {path: 'book-detail/:title/:id', component: BookDetailComponent}
+      {path: 'book-detail/:title/:id', component: BookDetailComponent},
+      {path: 'pages-detail/:id', component: PagesDetailComponent}, // For backward compatibility
     ]
   },
   { path: '**', redirectTo: '' },

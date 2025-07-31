@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NbToastrService } from '@nebular/theme';
 import { BookService } from 'src/app/service/book-service/book-service';
 import { Season } from 'src/app/shared/interface/Season';
@@ -10,17 +10,18 @@ import { Season } from 'src/app/shared/interface/Season';
   styleUrls: ['./book-detail.component.scss']
 })
 export class BookDetailComponent implements OnInit {
- 
- bookId: string = '';
- storyTitle: string = '';
+
+  bookId: string = '';
+  storyTitle: string = '';
   isLoading: boolean = true;
   storySeasons: Season[] = []; // tip Season değilse any[] kullan
 
   constructor(
     private route: ActivatedRoute,
     private bookService: BookService,
-    private toastrService: NbToastrService
-  ) {}
+    private toastrService: NbToastrService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.bookId = this.route.snapshot.paramMap.get('id') || '';
@@ -44,9 +45,8 @@ export class BookDetailComponent implements OnInit {
   }
 
   openSeason(season: Season): void {
-    // 👇 Detay sayfasına git veya modal aç
-    console.log('Seçilen bölüm:', season);
-    // örnek: this.router.navigate(['/season-detail', season.id]);
+    this.router.navigate(['/pages-detail', season.id]);
+
   }
 
 }

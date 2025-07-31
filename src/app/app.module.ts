@@ -44,6 +44,7 @@ import { ChatComponent } from './pages/chat/chat.component';
 import { EditorComponent } from './pages/editor/editor.component';
 import { BookDetailComponent } from './pages/book-detail/book-detail.component';
 import { BookService } from './service/book-service/book-service';
+import { PagesDetailComponent } from './pages/pages-detail/pages-detail.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { BookService } from './service/book-service/book-service';
     ChatComponent,
     EditorComponent,
     BookDetailComponent,
+    PagesDetailComponent,
     
   ],
   imports: [
@@ -92,7 +94,9 @@ import { BookService } from './service/book-service/book-service';
     NbListModule,
     FormsModule,
     NbStepperModule,
-    HttpClientModule
+    HttpClientModule,
+    NbActionsModule
+    
 
   ],
   providers: [],

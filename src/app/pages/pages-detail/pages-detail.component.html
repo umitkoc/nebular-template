@@ -1,0 +1,27 @@
+<nb-card>
+  <nb-card-header>
+    <small>{{ seasonTitle }} - Sayfa {{ currentPageIndex + 1 }} / {{ pages.length }}</small>
+  </nb-card-header>
+  <nb-card-body>
+    <textarea
+      nbInput
+      fullWidth
+      [(ngModel)]="pages[currentPageIndex].content"
+      placeholder="Sayfa içeriğini yazınız"
+    ></textarea>
+  </nb-card-body>
+
+  <nb-card-footer>
+        <button
+          nbButton
+          size="tiny"
+          *ngFor="let page of pages; let i = index"
+          [status]="currentPageIndex === i ? 'primary' : 'basic'"
+          (click)="changePage(i)"
+        >
+          {{ i + 1 }}
+        </button>
+  </nb-card-footer>
+      <button nbButton status="warning" (click)="updatePage()" size="tiny" >Güncelle</button>
+
+</nb-card>
