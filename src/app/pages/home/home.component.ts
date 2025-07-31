@@ -15,107 +15,32 @@ export class HomeComponent {
 
   stories = [
     {
-      id: '1',
-      title: 'Yaz Gecesi',
-      image: 'https://picsum.photos/seed/story1/600/300',
-      content: 'Gökyüzü yıldızlarla doluydu. Her şey sessiz ve huzurluydu...',
+      title: 'Ejderha Günlükleri',
+      image: 'https://i.pinimg.com/236x/77/b0/3e/77b03ece1a6dcb4b4ca24844c36364b0.jpg',
+      pageCount: 320,
+      chapterCount: 12,
+      authorCount: 1,
+      createdAt: new Date('2024-10-01'),
+      updatedAt: new Date('2025-07-29')
     },
-    {
-      id: '2',
-      title: 'Kış Masalı',
-      image: 'https://picsum.photos/seed/story2/600/300',
-      content: 'Karlar sessizce yağıyordu. Her şey bembeyaz bir rüyaya dönüşmüştü...',
-    },
-    {
-      id: '1',
-      title: 'Yaz Gecesi',
-      image: 'https://picsum.photos/seed/story1/600/300',
-      content: 'Gökyüzü yıldızlarla doluydu. Her şey sessiz ve huzurluydu...',
-    },
-    {
-      id: '2',
-      title: 'Kış Masalı',
-      image: 'https://picsum.photos/seed/story2/600/300',
-      content: 'Karlar sessizce yağıyordu. Her şey bembeyaz bir rüyaya dönüşmüştü...',
-    },
-    {
-      id: '1',
-      title: 'Yaz Gecesi',
-      image: 'https://picsum.photos/seed/story1/600/300',
-      content: 'Gökyüzü yıldızlarla doluydu. Her şey sessiz ve huzurluydu...',
-    },
-    {
-      id: '2',
-      title: 'Kış Masalı',
-      image: 'https://picsum.photos/seed/story2/600/300',
-      content: 'Karlar sessizce yağıyordu. Her şey bembeyaz bir rüyaya dönüşmüştü...',
-    },
-    {
-      id: '1',
-      title: 'Yaz Gecesi',
-      image: 'https://picsum.photos/seed/story1/600/300',
-      content: 'Gökyüzü yıldızlarla doluydu. Her şey sessiz ve huzurluydu...',
-    },
-    {
-      id: '2',
-      title: 'Kış Masalı',
-      image: 'https://picsum.photos/seed/story2/600/300',
-      content: 'Karlar sessizce yağıyordu. Her şey bembeyaz bir rüyaya dönüşmüştü...',
-    },
-    {
-      id: '1',
-      title: 'Yaz Gecesi',
-      image: 'https://picsum.photos/seed/story1/600/300',
-      content: 'Gökyüzü yıldızlarla doluydu. Her şey sessiz ve huzurluydu...',
-    },
-    {
-      id: '2',
-      title: 'Kış Masalı',
-      image: 'https://picsum.photos/seed/story2/600/300',
-      content: 'Karlar sessizce yağıyordu. Her şey bembeyaz bir rüyaya dönüşmüştü...',
-    },
-    {
-      id: '1',
-      title: 'Yaz Gecesi',
-      image: 'https://picsum.photos/seed/story1/600/300',
-      content: 'Gökyüzü yıldızlarla doluydu. Her şey sessiz ve huzurluydu...',
-    },
-    {
-      id: '2',
-      title: 'Kış Masalı',
-      image: 'https://picsum.photos/seed/story2/600/300',
-      content: 'Karlar sessizce yağıyordu. Her şey bembeyaz bir rüyaya dönüşmüştü...',
-    },
-    {
-      id: '1',
-      title: 'Yaz Gecesi',
-      image: 'https://picsum.photos/seed/story1/600/300',
-      content: 'Gökyüzü yıldızlarla doluydu. Her şey sessiz ve huzurluydu...',
-    },
-    {
-      id: '2',
-      title: 'Kış Masalı',
-      image: 'https://picsum.photos/seed/story2/600/300',
-      content: 'Karlar sessizce yağıyordu. Her şey bembeyaz bir rüyaya dönüşmüştü...',
-    }
   ];
 
 
   openWindow(story: any) {
     this.isLoading = true;
-      setTimeout(() => {
-        this.windowService.open(StoryWindowComponent, {
-          title: story.title,
-          context: {
-            bookId: story.id,
-          },
-          closeOnEsc: true,
-          hasBackdrop: true,
-          windowClass: 'custom-window-size'
+    setTimeout(() => {
+      this.windowService.open(StoryWindowComponent, {
+        title: story.title,
+        context: {
+          bookId: story.id,
+        },
+        closeOnEsc: true,
+        hasBackdrop: true,
+        windowClass: 'custom-window-size'
 
-        });
-        this.isLoading = false;
-      }, 5000);
+      });
+      this.isLoading = false;
+    }, 5000);
   }
 
 

@@ -4,6 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
+    import { HttpClientModule } from '@angular/common/http';
+
+
 import {
     NbThemeModule,
     NbLayoutModule,
@@ -24,6 +27,7 @@ import {
     NbContextMenuModule,
     NbChatModule,
     NbListModule,
+    NbStepperModule,
   } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { AppRoutingModule } from './app-routing.module';
@@ -38,6 +42,7 @@ import { ConfirmDialogComponent } from './shared/confirm-dialog/confirm-dialog.c
 import { StoryWindowComponent } from './shared/story-window/story-window.component';
 import { BlogAiComponent } from './pages/blog-ai/blog-ai.component';
 import { ChatComponent } from './pages/chat/chat.component';
+import { EditorComponent } from './pages/editor/editor.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +58,7 @@ import { ChatComponent } from './pages/chat/chat.component';
     StoryWindowComponent,
     BlogAiComponent,
     ChatComponent,
+    EditorComponent
     
   ],
   imports: [
@@ -84,7 +90,8 @@ import { ChatComponent } from './pages/chat/chat.component';
     NbChatModule.forRoot({ messageGoogleMapKey: 'MAP_KEY' }),
     NbListModule,
     FormsModule,
-    NbInputModule
+    NbStepperModule,
+    HttpClientModule
 
   ],
   providers: [],

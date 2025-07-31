@@ -12,6 +12,7 @@ import { loginGuard } from './login.guard';
 import { LogoutComponent } from './pages/logout/logout.component';
 import { BlogAiComponent } from './pages/blog-ai/blog-ai.component';
 import { ChatComponent } from './pages/chat/chat.component';
+import { EditorComponent } from './pages/editor/editor.component';
 
 
 const routes: Routes = [
@@ -33,7 +34,8 @@ const routes: Routes = [
       { path: 'profile', component: ProfileComponent },
       { path: 'settings', component: SettingsComponent },
       { path: 'logout', component: LogoutComponent },
-      { path: 'chat', component: ChatComponent }
+      { path: 'chat', component: ChatComponent },
+      { path: 'editor', component: EditorComponent }
     ]
   },
   { path: '**', redirectTo: '' },

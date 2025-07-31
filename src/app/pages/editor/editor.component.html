@@ -1,0 +1,109 @@
+<!-- Form ekranı -->
+<nb-layout *ngIf="!isSubmitting">
+  <nb-layout-column>
+    <nb-stepper orientation="vertical" [selectedIndex]="currentStep">
+      
+      <!-- Step 1: Karakterler -->
+      <nb-step label="Karakterler" [stepControl]="characterForm">
+        <form [formGroup]="characterForm">
+          <div formArrayName="characters">
+            <div *ngFor="let character of characters.controls; let i = index" [formGroupName]="i" class="mb-3">
+              <input nbInput fullWidth formControlName="name" placeholder="Karakter İsmi" />
+              <textarea nbInput fullWidth formControlName="description" placeholder="Özellikler" rows="2"></textarea>
+            </div>
+          </div>
+          <button nbButton status="info" (click)="addCharacter()">Karakter Ekle</button>
+        </form>
+      </nb-step>
+
+      <!-- Step 2: Hikaye -->
+      <nb-step label="Kısa Hikaye" [stepControl]="storyForm">
+        <form [formGroup]="storyForm">
+          <textarea nbInput fullWidth formControlName="story" placeholder="Hikayeyi yazınız" rows="6"></textarea>
+
+          <div class="d-flex justify-content-between mt-1">
+            <div *ngIf="storyForm.get('story')?.errors?.['minlength'] && storyForm.get('story')?.touched"
+                class="text-danger">
+              Hikaye en az 1000 karakter olmalı.
+            </div>
+            <div [ngClass]="{
+              'text-danger': (storyForm.get('story')?.value?.length ?? 0) < 1000,
+              'text-success': (storyForm.get('story')?.value?.length ?? 0) >= 1000
+            }">
+              {{ (storyForm.get('story')?.value?.length) || 0 }} / 1000 karakter
+            </div>
+          </div>
+        </form>
+      </nb-step>
+
+      <!-- Step 3: Resimler -->
+      <nb-step label="Resimler" [stepControl]="imageForm">
+        <div class="mb-3">
+          <input type="file" (change)="onFileSelect($event)" multiple />
+        </div>
+        <div class="mb-3">
+          <input nbInput fullWidth [(ngModel)]="imagePrompt" placeholder="AI'den resim iste" />
+          <button nbButton status="success" (click)="generateAIImage()">Resim Oluştur</button>
+        </div>
+        <div class="d-flex flex-wrap mt-3">
+          <nb-card *ngFor="let img of generatedImages" class="m-2">
+            <nb-card-body>
+              <img [src]="img.url" alt="AI Image" style="width: 100px; height: 100px;" />
+              <div class="mt-2">
+                <button nbButton size="tiny" (click)="confirmAIImage(img)">Onayla</button>
+              </div>
+            </nb-card-body>
+          </nb-card>
+        </div>
+      </nb-step>
+
+      <!-- Step 4: Önizleme -->
+      <nb-step label="Önizleme">
+        <h4>Karakterler</h4>
+        <ul>
+          <li *ngFor="let ch of characterForm.value.characters">
+            <strong>{{ ch.name }}</strong>: {{ ch.description }}
+          </li>
+        </ul>
+
+        <h4>Hikaye</h4>
+        <p>{{ storyForm.value.story }}</p>
+
+        <h4>Resimler</h4>
+        <div class="d-flex flex-wrap">
+          <img *ngFor="let img of allImages" [src]="img.url" style="width: 100px; margin: 5px;" />
+        </div>
+      </nb-step>
+
+    </nb-stepper>
+  </nb-layout-column>
+
+  <!-- Sabit footer butonlar -->
+  <nb-layout-footer
+    style="position: fixed; bottom: 0; left: 0; right: 0; display: flex; justify-content: flex-end; gap: 1rem; padding: 1rem;">
+    
+    <button nbButton status="info" [disabled]="currentStep === 0" (click)="prev()">Geri</button>
+
+    <button nbButton status="primary" 
+            *ngIf="currentStep < totalSteps - 1" 
+            [disabled]="!isCurrentStepValid()" 
+            (click)="next()">
+      İleri
+    </button>
+
+    <button nbButton status="success" 
+            *ngIf="currentStep === totalSteps - 1" 
+            [disabled]="isSubmitting" 
+            (click)="submitStory(getFinalData())">
+      <nb-spinner *ngIf="isSubmitting" size="tiny"></nb-spinner>
+      <span *ngIf="!isSubmitting">Gönder</span>
+    </button>
+  </nb-layout-footer>
+</nb-layout>
+
+<!-- Spinner sayfası -->
+<nb-layout *ngIf="isSubmitting">
+  <nb-layout-column style="display: flex; justify-content: center; align-items: center; height: 80vh;">
+    <nb-spinner size="giant"></nb-spinner>
+  </nb-layout-column>
+</nb-layout>

@@ -1,10 +1,12 @@
-<nb-spinner *ngIf="isLoading">
+<nb-spinner *ngIf="isLoading" class="d-flex justify-content-center mt-5">
   <nb-spinner></nb-spinner>
 </nb-spinner>
+
 <div class="story-grid" *ngIf="!isLoading">
   <div class="story-item" *ngFor="let story of stories">
     <nb-flip-card>
 
+      <!-- Ön Yüz -->
       <nb-card-front>
         <nb-card class="story-card">
           <img [src]="story.image" alt="story image" />
@@ -13,25 +15,33 @@
 
           <div class="story-description-container">
             <p class="story-description">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam minima obcaecati a alias explicabo dolore
-              consequuntur sit consequatur vero quaerat fugit iure debitis, eaque corporis vitae ab beatae ipsa in.
+              Sayfa Sayısı: {{ story.pageCount }}<br />
+              Bölüm Sayısı: {{ story.chapterCount }}<br />
+              Yazar Sayısı: {{ story.authorCount }}<br />
+              İlk Yazılma: {{ story.createdAt | date: 'dd MMM yyyy' }}<br />
+              Son Güncelleme: {{ story.updatedAt | date: 'dd MMM yyyy' }}
             </p>
-            <button nbButton size="tiny" class="story-button" (click)="openWindow(story)">Read...</button>
+            <button nbButton size="tiny" class="story-button" (click)="openWindow(story)">OPEN</button>
           </div>
 
-          <nb-badge text="v1.0" status="warning" position="top left"></nb-badge>
+          <nb-badge text="v1.0" status="warning" position="top right"></nb-badge>
         </nb-card>
       </nb-card-front>
 
+      <!-- Arka Yüz -->
       <nb-card-back>
         <nb-card class="story-card">
-          <p class="story-description">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis harum aperiam quaerat nulla totam. Labore
-            dicta eos hic, ut laboriosam quisquam aspernatur ea unde. Itaque eos quasi quis ea quisquam.
-            Accusantium fuga recusandae accusamus. Voluptatum voluptates facilis illo animi quia numquam. Veniam,
-            commodi numquam voluptate veritatis possimus consequatur nesciunt doloribus vitae corrupti ea laborum
-            ducimus consequuntur! Quam in atque ipsum.
-          </p>
+          <p class="story-title">{{ story.title }}</p>
+
+          <div class="story-description-container">
+            <p class="story-description">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam minima obcaecati a alias explicabo dolore
+              consequuntur sit consequatur vero quaerat fugit iure debitis, eaque corporis vitae ab beatae ipsa in.
+            </p>
+            <button nbButton size="tiny" class="story-button" (click)="openWindow(story)">OPEN</button>
+          </div>
+
+          <nb-badge text="v1.0" status="warning" position="top right"></nb-badge>
         </nb-card>
       </nb-card-back>
 

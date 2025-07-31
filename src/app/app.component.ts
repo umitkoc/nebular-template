@@ -82,5 +82,6 @@ toggleTheme() {
     { title: 'Home', icon: 'home-outline', link: '/' },
     { title: 'Blog AI', icon: 'file-text-outline', link: '/blog' },
     { title: 'Chat', icon: 'message-circle-outline', link: '/chat' },
+    { title: 'Editor', icon: 'edit-2-outline', link: '/editor' }
   ];
 }
