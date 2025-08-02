@@ -38,7 +38,7 @@
 
 .story-description-container {
   position: relative;
-  padding: 1rem 3rem 1rem 1rem; // sağdan buton için boşluk bırak
+  padding: 1rem 3rem 1rem 1rem;
   flex-grow: 1;
 }
 
@@ -55,4 +55,37 @@
   top: 50%;
   right: 0px;
   transform: translateY(-50%);
+}
+
+/* ✅ Yeni Kitap Kartı Özel Stili */
+.add-book-card {
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.9s ease-in-out;
+}
+
+
+
+.add-book-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  padding: 1rem;
+  text-align: center;
+}
+
+.add-book-icon {
+  font-size: 2.5rem;
+  color: var(--text-hint-color);
+  margin-bottom: 0.5rem;
+}
+
+.add-book-text {
+  font-family: 'Literata', serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-hint-color);
 }

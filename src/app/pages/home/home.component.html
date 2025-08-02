@@ -1,8 +1,18 @@
-<nb-spinner *ngIf="isLoading" class="d-flex justify-content-center mt-5">
-  <nb-spinner></nb-spinner>
-</nb-spinner>
+<nb-spinner *ngIf="isLoading" class="d-flex justify-content-center mt-5"></nb-spinner>
 
 <div class="story-grid" *ngIf="!isLoading">
+
+  <!-- Yeni Kitap Ekle Kartı -->
+  <div class="story-item">
+    <nb-card class="story-card add-book-card" (click)="createNewBook()">
+      <div class="add-book-content">
+        <nb-icon icon="plus-circle-outline" pack="eva" class="add-book-icon"></nb-icon>
+        <p class="add-book-text">Yeni Kitap Ekle</p>
+      </div>
+    </nb-card>
+  </div>
+
+  <!-- Kitap Kartları -->
   <div class="story-item" *ngFor="let story of stories">
     <nb-flip-card>
 
@@ -35,7 +45,7 @@
 
           <div class="story-description-container">
             <p class="story-description">
-             {{story.description}}
+              {{ story.description }}
             </p>
             <button nbButton size="tiny" class="story-button" (click)="openBookDetail(story)">Open Book</button>
           </div>
@@ -46,4 +56,5 @@
 
     </nb-flip-card>
   </div>
+
 </div>

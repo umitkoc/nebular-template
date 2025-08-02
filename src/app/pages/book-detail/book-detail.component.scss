@@ -38,7 +38,7 @@
 
 .story-description-container {
   position: relative;
-  padding: 1rem 3rem 1rem 1rem; // sağdan buton için boşluk bırak
+  padding: 1rem 3rem 1rem 1rem;
   flex-grow: 1;
 }
 
@@ -56,11 +56,34 @@
   right: 0px;
   transform: translateY(-50%);
 }
-.title{
-    font-family: 'Literata', serif;
-    font-size: 2rem;
-    font-weight: bold;
-    text-align: center;
-    margin: 1rem 0;
-    color: var(--text-basic-color);
+
+.title {
+  font-family: 'Literata', serif;
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin: 1rem 0;
+  color: var(--text-basic-color);
+}
+
+/* ✅ Yeni Bölüm Kartı sadece bu kadar ekleme yeterli */
+.add-season-card {
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.add-season-content {
+  text-align: center;
+}
+
+.add-season-icon {
+  font-size: 2.5rem;
+  color: var(--text-hint-color);
+}
+
+.add-season-text {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-hint-color);
 }

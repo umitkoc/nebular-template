@@ -1,27 +1,32 @@
-<nb-card>
-  <nb-card-header>
-    <small>{{ seasonTitle }} - Sayfa {{ currentPageIndex + 1 }} / {{ pages.length }}</small>
-  </nb-card-header>
-  <nb-card-body>
-    <textarea
-      nbInput
-      fullWidth
-      [(ngModel)]="pages[currentPageIndex].content"
-      placeholder="Sayfa içeriğini yazınız"
-    ></textarea>
-  </nb-card-body>
-
-  <nb-card-footer>
-        <button
-          nbButton
-          size="tiny"
-          *ngFor="let page of pages; let i = index"
-          [status]="currentPageIndex === i ? 'primary' : 'basic'"
-          (click)="changePage(i)"
-        >
-          {{ i + 1 }}
-        </button>
-  </nb-card-footer>
-      <button nbButton status="warning" (click)="updatePage()" size="tiny" >Güncelle</button>
-
-</nb-card>
+<nb-layout>
+  <nb-layout-column>
+    <!-- Sabit Sayfa Navigasyonu -->
+    <nb-card class="page-nav-card" size="tiny" accent="info">
+      <nb-card-body>
+        <nb-list>
+          <nb-list-item *ngFor="let page of pages; let i = index" (click)="scrollToPage(i)">
+            {{ i + 1 }}
+          </nb-list-item>
+        </nb-list>
+      </nb-card-body>
+    </nb-card>
+    <!-- Sayfa Kartları -->
+    <div class="pages">
+      <nb-card 
+        *ngFor="let page of pages; let i = index" 
+        [attr.id]="'page-' + i" 
+        class="page-card">
+        <nb-card-body class="page-content">
+          <textarea  fullWidth fullHeight
+            nbInput 
+            [(ngModel)]="page.content"
+            class="page-textarea">
+          </textarea>
+        </nb-card-body>
+        <nb-card-footer class="page-footer">
+           {{ i + 1 }}
+        </nb-card-footer>
+      </nb-card>
+    </div>
+  </nb-layout-column>
+</nb-layout>

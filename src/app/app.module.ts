@@ -28,6 +28,7 @@ import {
     NbChatModule,
     NbListModule,
     NbStepperModule,
+    NbIconModule,
   } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { AppRoutingModule } from './app-routing.module';
@@ -43,7 +44,6 @@ import { StoryWindowComponent } from './shared/story-window/story-window.compone
 import { ChatComponent } from './pages/chat/chat.component';
 import { EditorComponent } from './pages/editor/editor.component';
 import { BookDetailComponent } from './pages/book-detail/book-detail.component';
-import { BookService } from './service/book-service/book-service';
 import { PagesDetailComponent } from './pages/pages-detail/pages-detail.component';
 
 @NgModule({
@@ -95,7 +95,7 @@ import { PagesDetailComponent } from './pages/pages-detail/pages-detail.componen
     FormsModule,
     NbStepperModule,
     HttpClientModule,
-    NbActionsModule
+    NbIconModule
     
 
   ],

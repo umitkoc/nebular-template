@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent {
   isLoading = false;
-  constructor(  private router: Router) { }
+
   stories = [
     {
       id: '1',
@@ -22,7 +22,14 @@ export class HomeComponent {
       description: 'Ejderhaların dünyasında geçen bir macera hikayesi.',
     }
   ];
+
+  constructor(private router: Router) {}
+
   openBookDetail(story: any) {
-        this.router.navigate(['/book-detail', story.title,story.id]);
+    this.router.navigate(['/book-detail', story.title, story.id]);
+  }
+
+  createNewBook() {
+    this.router.navigate(['/create-book']);
   }
 }

@@ -7,34 +7,18 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./pages-detail.component.scss']
 })
 export class PagesDetailComponent {
- pagesId: string = '';
+  pagesId: string = '';
 
- constructor(  private route: ActivatedRoute,) {
-   this.pagesId = this.route.snapshot.paramMap.get('id') || '';
- }
+  constructor(  private route: ActivatedRoute,) {
+    this.pagesId = this.route.snapshot.paramMap.get('id') || '';
+  }
+  pages = Array.from({ length: 12 }, () => ({ content: '' }));
 
-  seasonTitle = 'Bölüm 1';
-  currentPageIndex = 0;
-  pages: { id: number; content: string }[] = [];
-
-  ngOnInit(): void {
-    for (let i = 0; i < 12; i++) {
-      this.pages.push({
-        id: i,
-        content: `Sayfa ${i + 1} içeriği buraya yazılabilir.`,
-      });
+  scrollToPage(index: number): void {
+    const el = document.getElementById(`page-${index}`);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }
 
-  changePage(index: number) {
-    this.currentPageIndex = index;
-  }
-
-  updatePage() {
-    const currentPage = this.pages[this.currentPageIndex];
-    console.log('Güncellenen Sayfa:', currentPage);
-
-    // TODO: API entegrasyonu burada yapılabilir
-    // örn: this.pageService.update(currentPage).subscribe(...)
-  }
 }

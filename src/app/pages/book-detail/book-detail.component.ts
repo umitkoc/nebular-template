@@ -49,4 +49,8 @@ export class BookDetailComponent implements OnInit {
 
   }
 
+  createNewSeason(): void {
+    // this.router.navigate(['/create-season', this.bookId]);
+  }
+
 }

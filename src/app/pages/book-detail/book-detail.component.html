@@ -1,54 +1,63 @@
 <!-- Spinner (yükleniyor) -->
-<nb-spinner *ngIf="isLoading" class="d-flex justify-content-center mt-5">
-    <nb-spinner></nb-spinner>
-</nb-spinner>
-<h2 class="title">{{storyTitle}}</h2>
+<nb-spinner *ngIf="isLoading" class="d-flex justify-content-center mt-5"></nb-spinner>
+
+<!-- Başlık -->
+<h2 class="title">{{ storyTitle }}</h2>
 
 <!-- Bölümler -->
 <div class="story-grid" *ngIf="!isLoading">
 
-    <div class="story-item" *ngFor="let season of storySeasons">
-        <nb-flip-card>
+  <!-- ✅ Yeni Bölüm Ekle Kartı -->
+  <div class="story-item">
+    <nb-card class="story-card add-season-card" (click)="createNewSeason()">
+      <div class="add-season-content">
+        <nb-icon icon="plus-circle-outline" pack="eva" class="add-season-icon"></nb-icon>
+        <p class="add-season-text">Yeni Bölüm Ekle</p>
+      </div>
+    </nb-card>
+  </div>
 
-            <!-- Ön Yüz -->
-            <nb-card-front>
-                <nb-card class="story-card">
-                    <img [src]="season.image" alt="season image" />
-                    <p class="story-title">{{ season.title }}</p>
+  <!-- Tüm Bölümler -->
+  <div class="story-item" *ngFor="let season of storySeasons">
+    <nb-flip-card>
 
-                    <div class="story-description-container">
-                        <p class="story-description">
-                            Sayfa Sayısı: {{ season.pageCount }}<br />
-                            İlk Yazılma: {{ season.createdAt | date: 'dd MMM yyyy' }}<br />
-                            Son Güncelleme: {{ season.updatedAt | date: 'dd MMM yyyy' }}
-                        </p>
-                        <button nbButton size="tiny" class="story-button" (click)="openSeason(season)">
-                            Bölümü Aç
-                        </button>
-                    </div>
+      <!-- Ön Yüz -->
+      <nb-card-front>
+        <nb-card class="story-card">
+          <img [src]="season.image" alt="season image" />
+          <p class="story-title">{{ season.title }}</p>
 
-                    <nb-badge text="v1.0" status="warning" position="top right"></nb-badge>
-                </nb-card>
-            </nb-card-front>
+          <div class="story-description-container">
+            <p class="story-description">
+              Sayfa Sayısı: {{ season.pageCount }}<br />
+              İlk Yazılma: {{ season.createdAt | date: 'dd MMM yyyy' }}<br />
+              Son Güncelleme: {{ season.updatedAt | date: 'dd MMM yyyy' }}
+            </p>
+            <button nbButton size="tiny" class="story-button" (click)="openSeason(season)">
+              Bölümü Aç
+            </button>
+          </div>
 
-            <!-- Arka Yüz -->
-            <nb-card-back>
-                <nb-card class="story-card">
-                    <p class="story-title">{{ season.title }}</p>
+          <nb-badge text="v1.0" status="warning" position="top right"></nb-badge>
+        </nb-card>
+      </nb-card-front>
 
-                    <div class="story-description-container">
-                        <p class="story-description">
-                            {{ season.description }}
-                        </p>
-                        <button nbButton size="tiny" class="story-button" (click)="openSeason(season)">
-                            Bölümü Aç
-                        </button>
-                    </div>
+      <!-- Arka Yüz -->
+      <nb-card-back>
+        <nb-card class="story-card">
+          <p class="story-title">{{ season.title }}</p>
 
-                    <nb-badge text="v1.0" status="warning" position="top right"></nb-badge>
-                </nb-card>
-            </nb-card-back>
+          <div class="story-description-container">
+            <p class="story-description">{{ season.description }}</p>
+            <button nbButton size="tiny" class="story-button" (click)="openSeason(season)">
+              Bölümü Aç
+            </button>
+          </div>
 
-        </nb-flip-card>
-    </div>
+          <nb-badge text="v1.0" status="warning" position="top right"></nb-badge>
+        </nb-card>
+      </nb-card-back>
+
+    </nb-flip-card>
+  </div>
 </div>
