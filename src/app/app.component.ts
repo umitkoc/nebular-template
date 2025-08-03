@@ -80,7 +80,6 @@ toggleTheme() {
 
   menuItems = [
     { title: 'Home', icon: 'home-outline', link: '/' },
-    { title: 'Editor', icon: 'edit-2-outline', link: '/editor' },
     { title: 'Chat', icon: 'message-circle-outline', link: '/chat' },
   ];
 }

@@ -14,6 +14,7 @@ import { ChatComponent } from './pages/chat/chat.component';
 import { EditorComponent } from './pages/editor/editor.component';
 import { BookDetailComponent } from './pages/book-detail/book-detail.component';
 import { PagesDetailComponent } from './pages/pages-detail/pages-detail.component';
+import { CreateBookComponent } from './pages/create-book/create-book.component';
 
 
 const routes: Routes = [
@@ -38,6 +39,7 @@ const routes: Routes = [
       { path: 'editor', component: EditorComponent },
       {path: 'book-detail/:title/:id', component: BookDetailComponent},
       {path: 'pages-detail/:id', component: PagesDetailComponent}, // For backward compatibility
+      {path:'create-book',component:CreateBookComponent}
     ]
   },
   { path: '**', redirectTo: '' },

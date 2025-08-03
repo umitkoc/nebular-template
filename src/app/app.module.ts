@@ -45,6 +45,7 @@ import { ChatComponent } from './pages/chat/chat.component';
 import { EditorComponent } from './pages/editor/editor.component';
 import { BookDetailComponent } from './pages/book-detail/book-detail.component';
 import { PagesDetailComponent } from './pages/pages-detail/pages-detail.component';
+import { CreateBookComponent } from './pages/create-book/create-book.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { PagesDetailComponent } from './pages/pages-detail/pages-detail.componen
     EditorComponent,
     BookDetailComponent,
     PagesDetailComponent,
+    CreateBookComponent,
     
   ],
   imports: [

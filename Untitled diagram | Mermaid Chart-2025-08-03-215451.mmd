@@ -1,0 +1,52 @@
+---
+config:
+  theme: redux-dark
+---
+sequenceDiagram
+    actor U
+    participant U as user
+    participant R as RealBook
+    participant S as User.API
+    participant B as Book.API
+    participant F as Firebase
+    U->>R: Sign In
+    R->>S:userCredential
+    S->>F:checkUserCredential
+    F-->>S:successResponse
+    S-->>R:success
+    R-->>U:Success
+    U->>R:home()
+    R->>B:getBooks(usrId)
+    B->>F:getBooksDetail(usrId)
+    F-->>B:response
+    B-->>R:response
+    U->>R:createBook
+    R->>R:CreateBookPage
+    U->>R:Submit(usrId,bookId)
+    R->>B:createBook
+    B->>F:createBook
+    F-->>B:response
+    B-->>R:response
+    R->>R:GetHomePage
+    U->>R: GetBookById
+    R->>B:getSectionsByBookId
+    B->>F:getSections
+    F-->>B:response
+    B-->>R:response
+    U->>R:CreateSection(bookId)
+    R->>R:CreateSectionPage
+    U->>R:Submit(bookId,sectionId,usrId)
+    R->>B:CreateSection
+    R-->>R:GetSectionPage
+    B->>F:CreateSection(flag=false)
+    F-->>B:response
+    B-->>R:response
+    B-->>B:PrepareSectionWithAI
+    B-->>B:SectionReady(flag=true)
+    B->>F: Notification
+    F-->>R:SectionReady
+    U->>R:OpenSection(bookId,usdrId,sectionId)
+    R->>B:GetSectionDetail
+    B->>F:GetSectionDetail(flag=true)
+    F-->B:response
+    B-->>R:response

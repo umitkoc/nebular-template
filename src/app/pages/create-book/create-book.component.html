@@ -1,0 +1,43 @@
+<nb-layout>
+    <nb-layout-column>
+      <nb-card>
+        <nb-card-body>
+          <form (ngSubmit)="createBook()" #bookForm="ngForm">
+  
+            <!-- Kitap Başlığı -->
+            <div class="form-group">
+              <input nbInput fullWidth id="title" name="title" [(ngModel)]="book.title" placeholder="Kitabın adı" required />
+            </div>
+  
+            <!-- Açıklama -->
+            <div class="form-group">
+              <textarea nbInput fullWidth id="description" name="description" [(ngModel)]="book.description" placeholder="Kitabın kısa özeti" rows="5" required></textarea>
+            </div>
+  
+            <!-- Kapak Görseli -->
+            <div class="form-group">
+              <input nbInput fullWidth id="coverImageUrl" name="coverImageUrl" [(ngModel)]="book.coverImageUrl" placeholder="Kapak Görseli URL https://..." />
+            </div>
+  
+            <!-- Tür Seçimi -->
+            <div class="form-group">
+              <label for="genre">Tür</label>
+              <nb-select fullWidth id="genre" name="genre" [(ngModel)]="book.genre" placeholder="Tür seçin">
+                <nb-option *ngFor="let genre of genres" [value]="genre">{{ genre }}</nb-option>
+              </nb-select>
+            </div>
+  
+            <!-- Yayın Durumu -->
+            <div class="form-group">
+              <nb-checkbox [(ngModel)]="book.isPublished" name="isPublished">Yayında Olsun</nb-checkbox>
+            </div>
+  
+          </form>
+        </nb-card-body>
+  
+        <nb-card-footer class="text-right">
+          <button nbButton status="primary" (click)="createBook()" [disabled]="bookForm.invalid">Kitabı Oluştur</button>
+        </nb-card-footer>
+      </nb-card>
+    </nb-layout-column>
+  </nb-layout>
